@@ -1,0 +1,29 @@
+#!/usr/bin/env emacs --script
+(require 'cl-lib)
+(require 'subr-x)
+
+
+(defun should-syntax-highlight (sym boundp-fn)
+  (and (funcall boundp-fn sym)
+       (let* ((path (find-lisp-object-file-name sym ""))
+              (name (symbol-name sym)))
+         (and (or (eq path 'C-source)
+                  (and (stringp path)
+                       (string-match "/lisp/emacs-lisp/.+\.el" path)))
+              (not (or (string-prefix-p "`" name)
+                       (string-prefix-p "(" name)))))))
+
+(dolist (boundp-fn (list #'boundp #'fboundp))
+  (princ
+   (concat
+    (string-join
+     (sort (cl-loop for sym being the symbols
+                    if (should-syntax-highlight sym boundp-fn)
+                    collect (symbol-name sym))
+           #'string-lessp)
+     "|") "\n")))
+
+
+
+
+
