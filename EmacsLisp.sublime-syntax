@@ -17,11 +17,18 @@ contexts:
     - include: strings
     - include: control
     - include: operators
-
+    - include: functions
 
   control:
-    - match: \b(?i:while|when|unless|typecase|return-from|cl-return-from|return|repeat|prog*|prog|maplist|mapl|mapcon|mapcar|mapcan|mapc|loop|cl-loop|let|if|etypecase|dotimes|dolist|do*|do|cond|case|block|as|always)\b
+    - match: \b(?i:always|as|block|case|cl-loop|cl-return-from|cond|condition-case|do|dolist|dotimes|do*|etypecase|if|let|loop|mapc|mapcan|mapcar|mapcon|mapl|maplist|prog1|progn|repeat|return|return-from|typecase|unless|when|while)\b
       scope: keyword.control.lisp
+
+  functions:
+    - match: \b(?i:(cl-defgeneric|cl-define-compiler-macro|cl-defmacro|cl-defmethod|cl-defstruct|cl-defsubst|cl-deftype|cl-defun|defadvice|defalias|defclass|defconst|defconst-mode-local|defcustom|defface|defgeneric|defgroup|define-child-mode|define-compiler-macro|define-compiler-macro|define-derived-mode|define-key|define-minor-mode|define-package|defmacro|defmacro*|defmethod|defsetf|defstruct|defsubst|defsubst*|deftype|defun|defun*|defvar|defvar-local|defvar-mode-local|defvaralias|defvoo|interactive|provide|require))\b\s+([\w\-!?<>]*)
+      scope: meta.function.lisp
+      captures:
+        1: storage.type.function-type.lisp
+        2: entity.name.function.lisp
 
   operators:
     - match: '\/\=|\>\=|\<\=|\=|\>|\<'
