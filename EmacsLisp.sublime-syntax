@@ -24,7 +24,7 @@ contexts:
       scope: keyword.control.lisp
 
   functions:
-    - match: \b(?i:(cl-defgeneric|cl-define-compiler-macro|cl-defmacro|cl-defmethod|cl-defstruct|cl-defsubst|cl-deftype|cl-defun|defadvice|defalias|defclass|defconst|defconst-mode-local|defcustom|defface|defgeneric|defgroup|define-child-mode|define-compiler-macro|define-compiler-macro|define-derived-mode|define-key|define-minor-mode|define-package|defmacro|defmacro*|defmethod|defsetf|defstruct|defsubst|defsubst*|deftype|defun|defun*|defvar|defvar-local|defvar-mode-local|defvaralias|defvoo|interactive|provide|require))\b\s+([\w\-!?<>]*)
+    - match: \b(?i:(cl-defgeneric|cl-define-compiler-macro|cl-defmacro|cl-defmethod|cl-defstruct|cl-defsubst|cl-deftype|cl-defun|defadvice|defalias|defclass|defconst|defconst-mode-local|defcustom|defface|defgeneric|defgroup|define-child-mode|define-compiler-macro|define-compiler-macro|define-derived-mode|define-key|define-minor-mode|define-package|defmacro|defmacro*|defmethod|defsetf|defstruct|defsubst|defsubst*|deftype|defun|defun*|defvar|defvar-local|defvar-mode-local|defvaralias|defvoo|interactive|provide|require))\b[ )]
       scope: meta.function.lisp
       captures:
         1: storage.type.function-type.lisp
